@@ -61,9 +61,22 @@
 \theoremstyle{definition} % "Определение"
 \newtheorem{corollary}{Следствие}[theorem]
 \newtheorem{problem}{Задача}[section]
- 
+
+
 \theoremstyle{remark} % "Примечание"
 \newtheorem*{nonum}{Решение}
+
+\newtheoremstyle{break}%
+{}%
+{}%
+{\itshape}%
+{}%
+{\bfseries}%
+{}%
+{\newline}
+{}%
+\theoremstyle{break}
+\newtheorem{definition}{Определение}
 
 %%% Программирование
 \usepackage{etoolbox} % логические операторы
