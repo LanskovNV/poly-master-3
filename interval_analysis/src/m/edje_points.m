@@ -15,13 +15,13 @@ function edje_points(x, y, irp_temp)
 
 		y_top = yp0(i, 2);
 		y_bot = yp0(i, 1);
-		fprintf("i: %d, top: %.3f, bottom: %.3f\n", i, abs(y_top - x_top), abs(y_bot - x_bot));
-		%if abs(y_top - x_top) < MY_EPS
-		%	display(i);
-		%endif
-		%if abs(y_bot - x_bot) < MY_EPS
-		%	display(i);
-		%endif
+		%fprintf("i: %d, top: %.3f, bottom: %.3f\n", i, abs(y_top - x_top), abs(y_bot - x_bot));
+		if abs(y_top - x_top) < MY_EPS
+			display(i);
+		endif
+		if abs(y_bot - x_bot) < MY_EPS
+			display(i);
+		endif
 	endfor
 
 	border_x = [-4e4, 4e4];
@@ -39,5 +39,6 @@ function edje_points(x, y, irp_temp)
 		set(gca, 'fontsize', 12);
 		xlim([cur_point_x + border_x(1), cur_point_x + border_x(2)]);
 		ylim([cur_point_y + border_y(1), cur_point_y + border_y(2)]);
+		%saveas(gcf, sprintf("../report/images/edge_point_%d.eps", i), "epsc");
 	endfor
 endfunction

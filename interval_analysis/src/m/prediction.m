@@ -15,7 +15,12 @@ function prediction(x, y, irp_temp, b_maxdiag, b_gravity)
 	yp = ir_predict(irp_temp, Xp);         # интервальный прогноз значений y в точках xp
 	ypmid = mean(yp,2);                     # средние значения прогнозных интервалов
 	yprad = 0.5 * (yp(:,2) - yp(:,1));      # радиус прогнозных интервалов
-
+	
+	for i=1:5
+		fprintf("[%d, %d]\n", yp(i, 1), yp(i, 2));
+	endfor
+	display(yprad);
+	
 	yprad_relative = 100 * yprad ./ ypmid;  # относительная величина неопределенности прогнозов в процентах
 	
 	## Графическое представление коридора совместных зависимостей для модели y = beta1 + beta2 * x
@@ -31,4 +36,5 @@ function prediction(x, y, irp_temp, b_maxdiag, b_gravity)
 	ir_scatter(ir_problem(Xp, ypmid, yprad),'ro');
 	grid on;
 	set(gca, 'fontsize', 12);
+	%saveas(gcf, "../report/images/prediction.eps","epsc");
 endfunction

@@ -9,4 +9,5 @@ function joint_depth(irp_temp, b_maxdiag, b_gravity)
 	ir_plotline(b_gravity, xlim, 'b--');     # зависимость с параметрами, оцененными как центр тяжести ИМ  
 	grid on;
 	set(gca, 'fontsize', 12);
+	saveas(gcf, "../report/images/joint_depth.eps","epsc");
 endfunction

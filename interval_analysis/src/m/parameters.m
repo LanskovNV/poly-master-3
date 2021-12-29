@@ -14,6 +14,9 @@ function [b_maxdiag, b_gravity] = parameters(x, y, irp_temp)
 	b_gravity = mean(vertices);   # как центр тяжести информационного множества 
 	b_lsm = (X \ y)';             # методом наименьших квадратов
 	
+	display(b_int);
+	fprintf("b1: %d\n", (b_int(1, 1) + b_int(1, 2)) / 2);
+	fprintf("b2: %d\n", (b_int(2, 1) + b_int(2, 2)) / 2);
 	## Графическое представление внешней интервальной оценки информационного множества
 	figure('position',[0, 0, 800, 600]);
 	ir_plotbeta(irp_temp);
@@ -24,10 +27,10 @@ function [b_maxdiag, b_gravity] = parameters(x, y, irp_temp)
 	xlabel('\beta_1');
 	ylabel('\beta_2');
 	title('Information set');
-
 	## Точечные оценки
 	plot(b_maxdiag(1), b_maxdiag(2), 'ro');
 	plot(b_gravity(1), b_gravity(2), 'k+');
 	plot(b_lsm(1), b_lsm(2), 'gx');
 	legend("", "", "enclosure", "maxdiag",  "gravity", "lsm");
+	%saveas(gcf, "../report/images/info_set_full.eps","epsc");	
 endfunction

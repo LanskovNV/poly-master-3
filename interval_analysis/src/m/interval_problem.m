@@ -58,17 +58,21 @@ function irp_temp = interval_problem(x, y)
 	X = [ x.^0 x ];                              
 	lb = [-inf 0];                                
 	irp_temp = ir_problem(X, y, eps, lb);     
-												  
+	
+	display(w);	
 	## График интервальных измерений
 	figure('position', [0, 0, 800, 600]);
 	ir_scatter(irp_temp);   
 	set(gca, 'fontsize', 12);
 	grid on;
+	%saveas(gcf, "../report/images/interval_data.eps","epsc");
+	
 	figure('position', [0, 0, 800, 600]);
 	ir_plotbeta(irp_temp);
 	grid on;
 	set(gca, 'fontsize', 12);
 	xlabel('\beta_1')
 	ylabel('\beta_2');
-	title('Information set')
+	title('Information set');
+	%saveas(gcf, "../report/images/interval_info_set.eps","epsc");
 endfunction
