@@ -2,8 +2,6 @@
 
 \subsection{Точный экспоненциальный алгоритм}
 
-\subsubsection{Описание алгоритма}
-
 Рассмотрим теперь точный экспоненциальный алгоритм, для этого вначале приведем 
 несколько определений.
 
@@ -66,61 +64,24 @@
 рассматриваемой вершины и числа всех дуг, которые приходят в рассматриваемую
 вершину из вершин $S-u$.
 
-Перейдем теперь непосредственно к алгоритму~\cite{exact_alg}. Ключевой структурой данных, 
+\newpage
+
+Перейдем теперь непосредственно к алгоритму. Ключевой структурой данных, 
 которую мы будем использовать, будет массив $Y$ размерности $2^n \times 2$.
 В ходе работы алгоритма будем рассматривать подмножества множества вершин
 $S \subseteq V$, и $\forall S$:
 
 \begin{align*}
     Y[S, 1] &= X(S) \\
-    Y[S, 2] &= \{v | v \in V: X(S)~is~minimized~in~eq.~(\ref{xs})\}
+    Y[S, 2] = \{v | v \in V: &X(S)~is~minimized~in~eq.~(\ref{xs})\}
 \end{align*}
 
-\begin{algorithm}[hbt!]
 
-\caption{FAS}\label{alg:two}
-\KwData{A directed graph G}
-\KwResult{Size of a minimum feedback set}
 
-    Let Y be a $2^n \times 2$ array indexed from 0 to $2^n - 1$ \\
-    Initialize $Y[S, 1] =\infty$, $Y[S, 2] = 0$ for all subsets
-    S \subseteq V ~and~ S \neq \emptyset \\
-    Initialize Y[\emptyset, 1] = Y[\emptyset, 2] = 0 \\
-    \For{S \subseteq V enumerated~in~increasing~order~of~cardinality}{
-        \For{u \in V - S}{
-            $P = Y[S, 1] + \sum_{((u, v)\in A~\&~ v\in (S-u))}1$ \\
-            \If{$P = Y[S \cup \{u\}]$}{
-                $Y[S\cup\{u\}, 2] = Y[S\cup\{u\}, 2] \cup \{u\}$
-            }
-            \If{$P < Y[S \cup \{u\}]$}{
-                $Y[S\cup\{u\}, 1] = P$\\
-                $Y[S\cup\{u\}, 2] = u$
-            }
-        }    
-    }
-    \Return Y[V, 1]
-\end{algorithm}
 
-Таким образом в результате работы алгоритма мы получим:
 
-\begin{align*}
-    Y[V, 1] &-число~обратных~ребер~в~оптимальной~перестановке~для~G \\ 
-    \bigcup\limits_{S \subseteq V}Y[S, 2][1] &- множество~вершин,~которые~инцидентны 
-    ~обратным~дугам \\
-                                 &в~минимальном~по~размеру~множестве~F
-\end{align*}
 
-\subsubsection{Оценка сложности}
 
-\begin{theorem}
-    $G(V, E)$ - ориентированный граф, $|V| = n$, $|A| = m$.
-    Тогда размер множества обратных дуг может быть найден за время $O^*(2^n)$
-    и с использованием $O^*(2^n)$ памяти.
-\end{theorem}
-
-\proof
-В алгоритме мы для каждого подмножества S отрабатываем некоторое количество 
-вершин за время $O^*(n)$.
 
 
 

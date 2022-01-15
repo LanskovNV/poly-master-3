@@ -10,15 +10,24 @@
 
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
+\usepackage{hyperref}
 \usepackage{mathtext} 				% русские буквы в формулах
 \usepackage[T2A]{fontenc}			% кодировка
 \usepackage[utf8]{inputenc}			% кодировка исходного текста
-\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[english, russian]{babel}	% локализация и переносы
 \usepackage{indentfirst}
 \frenchspacing
 
-\usepackage{algorithm}
-\usepackage{algpseudocode}
+\DeclareSymbolFont{T2Aletters}{T2A}{cmr}{m}{it}
+
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\RestyleAlgo{ruled}
+\SetKwInput{KwData}{Input}
+\SetKwInput{KwResult}{Output}
+
+\usepackage{relsize}
 
 \renewcommand{\epsilon}{\ensuremath{\varepsilon}}
 \renewcommand{\phi}{\ensuremath{\varphi}}
@@ -111,7 +120,6 @@
 
 \usepackage{soul} % Модификаторы начертания
 
-\usepackage{hyperref}
 \usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
 \hypersetup{				% Гиперссылки
     unicode=true,           % русские буквы в раздела PDF
