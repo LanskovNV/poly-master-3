@@ -1,0 +1,6 @@
+!**/build/*.pdf
+**/build/*
+
+.idea
+*.pyc
+
