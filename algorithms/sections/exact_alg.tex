@@ -1,8 +1,8 @@
 %!TEX root=../main.tex
 
-\subsection{Точный экспоненциальный алгоритм}
+\section{Точный экспоненциальный алгоритм}
 
-\subsubsection{Описание алгоритма}
+\subsection{Описание алгоритма}
 
 Рассмотрим теперь точный экспоненциальный алгоритм, для этого вначале приведем 
 несколько определений.
@@ -24,8 +24,8 @@
     $\pi : V \rightarrow {1, ..., |V|}$ - функция, которая задает некоторую нумерацию на 
     множестве вершин V. При этом, $\forall a = (i, j) \in A$ :
     \begin{align*}
-        \pi(i) < \pi(j) &\Rightarrow a - forward\\ 
-        \pi(i) > \pi(j) &\Rightarrow a - backward\\ 
+        \pi(i) < \pi(j) &\Rightarrow a - прямая\\ 
+        \pi(i) > \pi(j) &\Rightarrow a - обратная\\ 
     \end{align*}
 \end{definition}
 
@@ -84,10 +84,10 @@ $S \subseteq V$, и $\forall S$:
 
     Let Y be a $2^n \times 2$ array indexed from 0 to $2^n - 1$ \\
     Initialize $Y[S, 1] =\infty$, $Y[S, 2] = 0$ for all subsets
-    S \subseteq V ~and~ S \neq \emptyset \\
-    Initialize Y[\emptyset, 1] = Y[\emptyset, 2] = 0 \\
-    \For{S \subseteq V enumerated~in~increasing~order~of~cardinality}{
-        \For{u \in V - S}{
+    $S \subseteq V ~and~ S \neq \emptyset$ \\
+    Initialize $Y[\emptyset, 1] = Y[\emptyset, 2] = 0$ \\
+    \For{$S \subseteq V enumerated~in~increasing~order~of~cardinality$}{
+        \For{$u \in V - S$}{
             $P = Y[S, 1] + \sum_{((u, v)\in A~\&~ v\in (S-u))}1$ \\
             \If{$P = Y[S \cup \{u\}]$}{
                 $Y[S\cup\{u\}, 2] = Y[S\cup\{u\}, 2] \cup \{u\}$
@@ -110,7 +110,7 @@ $S \subseteq V$, и $\forall S$:
                                  &в~минимальном~по~размеру~множестве~F
 \end{align*}
 
-\subsubsection{Оценка сложности}
+\subsection{Оценка сложности}
 
 \begin{theorem}
     $G(V, E)$ - ориентированный граф, $|V| = n$, $|A| = m$.
